@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vocabulaire Français - منصة المراجعة والتسميع</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            tajawal: ['Tajawal', 'sans-serif'],
+            fr: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            slate: {
+              850: '#151f32',
+              900: '#0f172a',
+              950: '#080d1a',
+            },
+            accent: {
+              50: '#f0f5ff',
+              100: '#e5edff',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      font-family: 'Tajawal', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+    .font-latin {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      direction: ltr;
+      display: inline-block;
+    }
+    .perspective-1200 {
+      perspective: 1200px;
+    }
+    .preserve-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    .card-transition {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+    /* Clean custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+
+  <!-- Top App Bar -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center font-bold text-sm font-latin tracking-wider shadow-sm">
+          FR
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base font-bold tracking-tight text-slate-900 dark:text-white">Vocabulaire</h1>
+            <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-latin">v2.0</span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400">مذاكرة وتسميع ذكي • تخزين محلي كامل</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5">
+        <button id="audioSpeedToggle" onclick="toggleAudioSpeed()" class="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-latin transition" title="سرعة النطق الصوتي">
+          <span id="speedLabel">1.0x</span>
+        </button>
+
+        <button id="toggleDarkBtn" class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+          <svg id="moonIcon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <svg id="sunIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="max-w-4xl mx-auto w-full px-4 pt-4">
+    <nav class="grid grid-cols-3 gap-1 bg-slate-200/70 dark:bg-slate-900/90 p-1 rounded-xl text-xs sm:text-sm font-bold border border-slate-200/50 dark:border-slate-800">
+      <button onclick="switchTab('cards')" id="tabBtn-cards" class="tab-btn py-2.5 rounded-lg transition-all duration-150 flex items-center justify-center gap-2 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        <span>البطاقات الذكية</span>
+      </button>
+
+      <button onclick="switchTab('quiz')" id="tabBtn-quiz" class="tab-btn py-2.5 rounded-lg transition-all duration-150 flex items-center justify-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        <span>التسميع والاختبار</span>
+      </button>
+
+      <button onclick="switchTab('manage')" id="tabBtn-manage" class="tab-btn py-2.5 rounded-lg transition-all duration-150 flex items-center justify-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+        <span>بنك الكلمات والوحدات</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Main View Container -->
+  <main class="max-w-4xl mx-auto w-full px-4 py-4 flex-1">
+
+    <!-- VIEW 1: FLASHCARDS -->
+    <section id="view-cards" class="space-y-4">
+      
+      <!-- Filter and Mode Controls -->
+      <div class="bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 shadow-sm">
+        
+        <div class="flex items-center gap-2 flex-1 min-w-[220px]">
+          <span class="text-xs font-bold text-slate-400">الوحدة:</span>
+          <select id="cardUnitFilter" onchange="filterCardDeck()" class="flex-1 text-xs font-bold bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 outline-none">
+            <option value="ALL">جميع الكلمات المسجلة</option>
+          </select>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-latin text-xs font-bold">
+            <span id="deckCounter">0 / 0</span>
+          </div>
+
+          <button onclick="shuffleDeck(true)" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-1.5 transition" title="خلط عشوائي للمجموعة">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            <span>عشوائي</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Flashcard Interactive Area -->
+      <div class="perspective-1200 w-full min-h-[350px] flex items-center justify-center py-2">
+        
+        <!-- The Card Element -->
+        <div id="mainCard" onclick="toggleFlip()" class="card-transition cursor-pointer relative w-full max-w-lg h-84 rounded-3xl preserve-3d border border-slate-200/90 dark:border-slate-800/90 shadow-md select-none bg-white dark:bg-slate-900">
+          
+          <!-- Card Front (French) -->
+          <div class="absolute inset-0 backface-hidden rounded-3xl p-7 flex flex-col justify-between items-center text-center bg-white dark:bg-slate-900">
+            
+            <div class="w-full flex items-center justify-between">
+              <span id="cardFrontUnitTag" class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-latin">
+                G10 U1
+              </span>
+              
+              <div class="flex items-center gap-2">
+                <span id="cardFrontMastery" class="text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-700 text-slate-400">
+                  مستوى: عادي
+                </span>
+                <button onclick="event.stopPropagation(); speakCurrentWord();" class="p-2 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="استمع للنطق">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="my-auto px-4">
+              <span id="cardFrontCategory" class="inline-block text-xs font-bold text-slate-400 dark:text-slate-500 mb-2">
+                اسم مذكر
+              </span>
+              <h2 id="cardFrontText" class="font-latin text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">
+                un dessin
+              </h2>
+            </div>
+
+            <div class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
+              <span>انقر لإظهار المعنى بالعربي</span>
+            </div>
+
+          </div>
+
+          <!-- Card Back (Arabic Translation) -->
+          <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-3xl p-7 flex flex-col justify-between items-center text-center bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800">
+            
+            <div class="w-full flex items-center justify-between">
+              <span id="cardBackUnitTag" class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-latin">
+                G10 U1
+              </span>
+              <button onclick="event.stopPropagation(); speakCurrentWord();" class="p-2 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-white dark:hover:bg-slate-800 transition" title="استمع للنطق">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              </button>
+            </div>
+
+            <div class="my-auto px-4">
+              <p id="cardBackFrench" class="font-latin text-base font-bold text-slate-400 dark:text-slate-400 mb-1">
+                un dessin
+              </p>
+              <h3 id="cardBackText" class="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight leading-snug">
+                رسم
+              </h3>
+            </div>
+
+            <div class="text-[11px] font-semibold text-slate-400">
+              <span>قيّم درجة استيعابك لتحديد موعد تكرارها</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- 4-Level Evaluation Buttons -->
+      <div class="max-w-lg mx-auto">
+        <p class="text-[11px] font-bold text-center text-slate-400 mb-2">كيف كانت إجابتك؟</p>
+        <div class="grid grid-cols-4 gap-2">
+          
+          <button onclick="gradeCard(1)" class="py-2.5 px-1 rounded-xl bg-white dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-slate-200 dark:border-slate-800 hover:border-rose-300 dark:hover:border-rose-900 transition flex flex-col items-center gap-1 group">
+            <span class="text-xs font-bold text-rose-600 dark:text-rose-400">نسيتها</span>
+            <span class="text-[10px] text-slate-400 group-hover:text-rose-500">تكرار عاجل</span>
+          </button>
+
+          <button onclick="gradeCard(2)" class="py-2.5 px-1 rounded-xl bg-white dark:bg-slate-900 hover:bg-amber-50 dark:hover:bg-amber-950/40 border border-slate-200 dark:border-slate-800 hover:border-amber-300 dark:hover:border-amber-900 transition flex flex-col items-center gap-1 group">
+            <span class="text-xs font-bold text-amber-600 dark:text-amber-400">بصعوبة</span>
+            <span class="text-[10px] text-slate-400 group-hover:text-amber-500">قريباً</span>
+          </button>
+
+          <button onclick="gradeCard(3)" class="py-2.5 px-1 rounded-xl bg-white dark:bg-slate-900 hover:bg-blue-50 dark:hover:bg-blue-950/40 border border-slate-200 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-900 transition flex flex-col items-center gap-1 group">
+            <span class="text-xs font-bold text-blue-600 dark:text-blue-400">عارفها</span>
+            <span class="text-[10px] text-slate-400 group-hover:text-blue-500">منتظم</span>
+          </button>
+
+          <button onclick="gradeCard(4)" class="py-2.5 px-1 rounded-xl bg-white dark:bg-slate-900 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 border border-slate-200 dark:border-slate-800 hover:border-emerald-300 dark:hover:border-emerald-900 transition flex flex-col items-center gap-1 group">
+            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">سهلة جداً</span>
+            <span class="text-[10px] text-slate-400 group-hover:text-emerald-500">متقنة</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Arrow Controls -->
+      <div class="max-w-lg mx-auto flex items-center justify-between pt-1">
+        <button onclick="prevCard()" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-2">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          <span>السابق</span>
+        </button>
+
+        <span class="text-[11px] text-slate-400 font-medium">مسافة (Space) لقلب الكارت</span>
+
+        <button onclick="nextCard()" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-2">
+          <span>التالي</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- VIEW 2: QUIZ & DRILLS -->
+    <section id="view-quiz" class="hidden space-y-4">
+      
+      <!-- Quiz Setup Screen -->
+      <div id="quizSetupCard" class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
+        
+        <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+          <h2 class="text-base font-bold text-slate-900 dark:text-white">جلسة تسميع مخصصة</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">اختر الوحدات وطريقة الاختبار لتثبيت الكلمات دون نسيان</p>
+        </div>
+
+        <!-- Multi-unit checkboxes -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="text-xs font-bold text-slate-600 dark:text-slate-300">الوحدات المطلوب شمولها:</label>
+            <button onclick="selectAllQuizUnits(true)" class="text-[11px] text-blue-600 dark:text-blue-400 font-bold hover:underline">تحديد الكل</button>
+          </div>
+          <div id="quizUnitsCheckboxes" class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Mode & Question Count -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          
+          <div>
+            <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5">نوع الاختبار:</label>
+            <select id="quizTestType" class="w-full text-xs font-bold bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 outline-none">
+              <option value="mcq">اختيار من متعدد (MCQ)</option>
+              <option value="write">تسميع كتابة إملائية (Dictée)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5">اتجاه السؤال:</label>
+            <select id="quizDirection" class="w-full text-xs font-bold bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 outline-none">
+              <option value="mixed">عشوائي (فرنسي ⟷ عربي)</option>
+              <option value="fr-to-ar">الفرنسية ➔ اختر العربي</option>
+              <option value="ar-to-fr">العربية ➔ اختر الفرنسي</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5">عدد الأسئلة:</label>
+            <select id="quizLength" class="w-full text-xs font-bold bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 outline-none font-latin">
+              <option value="15">15 سؤال سريع</option>
+              <option value="30" selected>30 سؤال</option>
+              <option value="50">50 سؤال مكثف</option>
+              <option value="ALL">جميع كلمات الوحدات المختارة</option>
+            </select>
+          </div>
+
+        </div>
+
+        <button onclick="startQuizSession()" class="w-full py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-700 text-white rounded-2xl font-bold text-sm shadow transition flex items-center justify-center gap-2">
+          <span>بدء التسميع</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </button>
+
+      </div>
+
+      <!-- Quiz Active Board -->
+      <div id="quizActiveArea" class="hidden space-y-4">
+        
+        <div class="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-2 font-latin">
+            <span id="quizProgressBadge" class="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+              Q 1 / 20
+            </span>
+            <span id="quizScoreBadge" class="text-xs font-bold px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300">
+              Score: 0
+            </span>
+          </div>
+          <button onclick="exitQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
+            إنهاء الجلسة
+          </button>
+        </div>
+
+        <!-- Question Prompt Area -->
+        <div class="bg-white dark:bg-slate-900 p-7 sm:p-9 rounded-3xl border border-slate-200 dark:border-slate-800 text-center relative">
+          
+          <div class="flex justify-between items-center mb-4">
+            <span id="quizQuestionUnit" class="text-[11px] font-bold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 font-latin">G10 U1</span>
+            <button id="quizTtsBtn" onclick="speakQuizWord()" class="p-2 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition" title="استمع للنطق">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+            </button>
+          </div>
+
+          <p id="quizQuestionPrompt" class="text-xs font-bold text-slate-400 mb-1">ما هو معنى الكلمة الفرنسية التالية؟</p>
+          <h2 id="quizQuestionWord" class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white py-3">
+            --
+          </h2>
+          <span id="quizWordCategory" class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-500">اسم مذكر</span>
+
+        </div>
+
+        <!-- Mode A: MCQ Choices -->
+        <div id="quizOptionsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Dynamically populated buttons -->
+        </div>
+
+        <!-- Mode B: Dictée (Typing) -->
+        <div id="quizWritingArea" class="hidden bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+          <label class="block text-xs font-bold text-slate-500">اكتب الكلمة بالفرنسية تماماً (مع الأداة un / une إن وجدت):</label>
+          <div class="flex gap-2">
+            <input type="text" id="quizWriteInput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="اكتب هنا..." class="flex-1 font-latin text-base bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 outline-none focus:border-blue-500">
+            <button onclick="submitWrittenAnswer()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition">
+              تحقق
+            </button>
+          </div>
+          <div id="quizWriteFeedback" class="hidden text-xs font-bold p-3 rounded-xl"></div>
+        </div>
+
+        <!-- Next button container -->
+        <div id="quizNextAction" class="hidden text-center pt-2">
+          <button onclick="nextQuizStep()" class="w-full max-w-xs mx-auto py-3 bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white rounded-xl font-bold text-xs shadow transition flex items-center justify-center gap-2">
+            <span>الانتقال للسؤال التالي</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Quiz Summary / Score Screen -->
+      <div id="quizResultsScreen" class="hidden bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 text-center space-y-5">
+        <h2 class="text-xl font-extrabold text-slate-900 dark:text-white">نتيجة جلسة التسميع</h2>
+        <div class="p-6 bg-slate-50 dark:bg-slate-850 rounded-2xl max-w-xs mx-auto border border-slate-200/60 dark:border-slate-800">
+          <p class="text-xs text-slate-400 font-bold mb-1">الدرجة المحققة</p>
+          <p id="quizFinalScore" class="font-latin text-4xl font-extrabold text-blue-600 dark:text-blue-400">18 / 20</p>
+          <p id="quizFinalPercentage" class="text-xs font-bold text-slate-600 dark:text-slate-300 mt-2 font-latin">90% Accuracy</p>
+        </div>
+        <div class="flex gap-2 justify-center max-w-xs mx-auto pt-2">
+          <button onclick="startQuizSession()" class="flex-1 py-2.5 px-4 bg-slate-900 dark:bg-blue-600 text-white rounded-xl font-bold text-xs transition">
+            إعادة التسميع
+          </button>
+          <button onclick="exitQuiz()" class="py-2.5 px-4 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl font-bold text-xs transition">
+            إنهاء
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- VIEW 3: MANAGE, ADD & BULK -->
+    <section id="view-manage" class="hidden space-y-4">
+      
+      <!-- Top controls -->
+      <div class="flex flex-wrap gap-2 justify-between items-center bg-white dark:bg-slate-900 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        
+        <div class="flex items-center gap-2">
+          <button onclick="openModal('addWordModal')" class="py-2 px-3.5 bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            <span>إضافة كلمة</span>
+          </button>
+
+          <button onclick="openModal('bulkImportModal')" class="py-2 px-3.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl flex items-center gap-1.5 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span>استيراد مجموعة كلمات</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="exportDataJSON()" class="p-2 text-xs font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition" title="تصدير نسخة احتياطية من الكلمات">
+            تصدير JSON
+          </button>
+          <button onclick="openModal('importJsonModal')" class="p-2 text-xs font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition" title="استيراد نسخة سابقة">
+            استيراد JSON
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <div class="sm:col-span-2 relative">
+          <input type="text" id="manageSearchInput" oninput="renderWordsList()" placeholder="بحث بالفرنسية أو العربية..." class="w-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 outline-none focus:border-blue-500">
+        </div>
+        <div>
+          <select id="manageUnitFilter" onchange="renderWordsList()" class="w-full text-xs font-bold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 outline-none">
+            <option value="ALL">جميع الوحدات</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="flex items-center justify-between text-xs text-slate-500 px-1 font-semibold">
+        <span>إجمالي الكلمات المخزنة: <b id="totalWordsCount" class="font-latin text-slate-900 dark:text-white font-bold">0</b></span>
+        <button onclick="confirmResetToDefault()" class="text-rose-500 hover:underline">استعادة الكلمات الأساسية الأصلية</button>
+      </div>
+
+      <!-- Words List -->
+      <div id="wordsListContainer" class="space-y-2 max-h-[60vh] overflow-y-auto pr-0.5">
+        <!-- Dynamically injected rows -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- MODAL: ADD SINGLE WORD -->
+  <div id="addWordModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-5 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-2">
+        <h3 class="font-bold text-sm text-slate-900 dark:text-white">إضافة كلمة جديدة للمنهج</h3>
+        <button onclick="closeModal('addWordModal')" class="text-slate-400 hover:text-slate-600 text-sm">✕</button>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 mb-1">الكلمة بالفرنسية (مع الأداة):</label>
+          <input type="text" id="newWordFr" placeholder="مثال: un crayon" class="font-latin w-full text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-500 mb-1">المعنى بالعربية:</label>
+          <input type="text" id="newWordAr" placeholder="مثال: قلم رصاص" class="w-full text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 outline-none">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs font-bold text-slate-500 mb-1">اسم الوحدة:</label>
+            <input type="text" id="newWordUnit" placeholder="مثال: G10 U2" value="G10 U1" class="font-latin w-full text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-500 mb-1">النوع / التصنيف:</label>
+            <select id="newWordCategory" class="w-full text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 outline-none font-bold">
+              <option value="اسم مذكر">اسم مذكر</option>
+              <option value="اسم مؤنث">اسم مؤنث</option>
+              <option value="فعل">فعل</option>
+              <option value="صفة">صفة</option>
+              <option value="لون">لون</option>
+              <option value="تعبير / جملة">تعبير / جملة</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button onclick="saveSingleWord()" class="flex-1 py-2.5 bg-slate-900 dark:bg-blue-600 text-white rounded-xl font-bold text-xs transition">حفظ الكلمة</button>
+        <button onclick="closeModal('addWordModal')" class="py-2.5 px-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl font-bold text-xs transition">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: BULK IMPORT -->
+  <div id="bulkImportModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-5 max-w-lg w-full shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-2">
+        <h3 class="font-bold text-sm text-slate-900 dark:text-white">لصق قائمة كلمات دفعة واحدة</h3>
+        <button onclick="closeModal('bulkImportModal')" class="text-slate-400 hover:text-slate-600 text-sm">✕</button>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 mb-1">اسم الوحدة لهذه المجموعة:</label>
+          <input type="text" id="bulkUnitName" value="G10 U2" placeholder="مثال: G10 U2" class="font-latin w-full text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 outline-none font-bold">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-500 mb-1">
+            الصق الكلمات هنا (سطر لكل كلمة: فرنسي = عربي أو فرنسي [تاب] عربي):
+          </label>
+          <textarea id="bulkTextInput" rows="8" placeholder="un sac = حقيبة
+une règle = مسطرة
+écouter = يستمع" class="w-full text-xs font-latin bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 outline-none"></textarea>
+        </div>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button onclick="processBulkImport()" class="flex-1 py-2.5 bg-slate-900 dark:bg-blue-600 text-white rounded-xl font-bold text-xs transition">استيراد القائمة</button>
+        <button onclick="closeModal('bulkImportModal')" class="py-2.5 px-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl font-bold text-xs transition">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: IMPORT JSON -->
+  <div id="importJsonModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-5 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-2">
+        <h3 class="font-bold text-sm text-slate-900 dark:text-white">استيراد ملف احتياطي JSON</h3>
+        <button onclick="closeModal('importJsonModal')" class="text-slate-400 hover:text-slate-600 text-sm">✕</button>
+      </div>
+      <div>
+        <label class="block text-xs font-bold text-slate-500 mb-2">اختر ملف الكلمات:</label>
+        <input type="file" id="jsonFileInput" accept=".json" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-slate-100 dark:file:bg-slate-800 file:text-slate-700 dark:file:text-slate-200">
+      </div>
+      <div class="flex gap-2 pt-2">
+        <button onclick="loadJsonFile()" class="flex-1 py-2.5 bg-blue-600 text-white rounded-xl font-bold text-xs transition">استيراد</button>
+        <button onclick="closeModal('importJsonModal')" class="py-2.5 px-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl font-bold text-xs transition">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Area -->
+  <div id="toastNotification" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-2.5 rounded-xl shadow-lg text-xs font-bold flex items-center gap-2 transition-all duration-200 opacity-0 pointer-events-none translate-y-3">
+    <span id="toastMessage">إشعار</span>
+  </div>
+
+  <script>
+    // Complete vocabulary extracted from G10 Unit 1
+    const MASTER_DEFAULT_WORDS = [
+      // Noms Masculins
+      { fr: "un dessin", ar: "رسم", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un mot", ar: "كلمة", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un voisin", ar: "جار", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un ami", ar: "صديق", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un dialogue", ar: "حوار", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un tableau", ar: "لوحة / سبورة", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un club", ar: "نادي", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un lycée", ar: "مدرسة ثانوية", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un élève", ar: "تلميذ", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un garçon", ar: "ولد", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un jeune", ar: "شاب", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un camarade", ar: "زميل", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un an", ar: "عام / سنة", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un frère", ar: "أخ", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un caractère", ar: "شخصية / طبع", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un copain", ar: "صاحب / رفيق", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un pays", ar: "دولة / بلد", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un chiffre", ar: "رقم", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un lycéen", ar: "طالب مدرسة ثانوي", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "les maths", ar: "الرياضيات", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un drapeau", ar: "علم", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "le basket", ar: "كرة السلة", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un nombre", ar: "عدد", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un jeu", ar: "لعبة", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un cahier", ar: "كراسة", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un âge", ar: "عمر / سن", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un nom", ar: "اسم العائلة / لقب", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un prénom", ar: "الاسم الأول للشخص", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+      { fr: "un père", ar: "أب", unit: "G10 U1", cat: "اسم مذكر", weight: 3 },
+
+      // Noms Féminins
+      { fr: "une adresse", ar: "عنوان", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une unité", ar: "وحدة", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une fiche", ar: "استمارة / بطاقة", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une photo", ar: "صورة", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une présentation", ar: "تقديم / تعارف", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une fille", ar: "بنت", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une camarade", ar: "زميلة", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une couleur", ar: "لون", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une partie", ar: "جزء", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "les nouvelles", ar: "الأحوال / الأخبار", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une classe", ar: "فصل", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une copine", ar: "صاحبة / رفيقة", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une mère", ar: "أم", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une voisine", ar: "جارة", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une langue", ar: "لغة", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "des retrouvailles", ar: "تلاقي / لقاء بعد غياب", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une ville", ar: "مدينة", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une rue", ar: "شارع", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une rencontre", ar: "لقاء / مقابلة", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "une lycéenne", ar: "طالبة في الثانوية", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+      { fr: "l'état de santé", ar: "الحالة الصحية", unit: "G10 U1", cat: "اسم مؤنث", weight: 3 },
+
+      // Verbes
+      { fr: "saluer", ar: "يحيي", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "s'appeler", ar: "يُدعى / يُسمى", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "habiter", ar: "يسكن", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "parler", ar: "يتكلم", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "aimer", ar: "يحب", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "préparer", ar: "يجهّز / يُعِد", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "être", ar: "يكون", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "avoir", ar: "يملك / عنده", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "donner", ar: "يعطي", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "quitter", ar: "يغادر / يترك", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "se présenter", ar: "يقدّم نفسه", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "présenter", ar: "يقدّم شخصاً", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "trouver", ar: "يجد", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "prendre congé", ar: "يستأذن بالانصراف", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "aller", ar: "يذهب", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "arriver", ar: "يصل", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "remercier", ar: "يشكر", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "répondre", ar: "يجيب / يرد", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "indiquer", ar: "يوضح / يبيّن", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "demander", ar: "يسأل / يطلب", unit: "G10 U1", cat: "فعل", weight: 3 },
+      { fr: "décrire", ar: "يصف", unit: "G10 U1", cat: "فعل", weight: 3 },
+
+      // Adjectifs du Caractère
+      { fr: "romantique", ar: "رومانسي", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "magnifique", ar: "رائع", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "sympathique (sympa)", ar: "لطيف / جذاب", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "timide", ar: "خجول", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "souriant", ar: "مبتسم", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "ordonné", ar: "منظم", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "patient", ar: "صبور", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "impatient", ar: "غير صبور / متسرع", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "intelligent", ar: "ذكي", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "bavard", ar: "ثرثار / رغاي", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "actif / active", ar: "نشيط / نشيطة", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "fantastique", ar: "رائع / مذهل", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "dynamique", ar: "حيوي / مفعم بالنشاط", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "serviable", ar: "خدوم / محب للمساعدة", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "sociable", ar: "اجتماعي", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "gourmand", ar: "أكول / محب للأكل", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "doux (douce)", ar: "رقيق / لطيف", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "intéressant", ar: "شيق / ممتع", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "génial", ar: "عبقري / رائع", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "idiot", ar: "أحمق / غبي", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "sincère", ar: "مخلص / صادق", unit: "G10 U1", cat: "صفة", weight: 3 },
+      { fr: "super", ar: "رائع", unit: "G10 U1", cat: "صفة", weight: 3 },
+
+      // Couleurs
+      { fr: "noir (noire)", ar: "أسود", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "vert (verte)", ar: "أخضر", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "bleu (bleue)", ar: "أزرق", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "gris (grise)", ar: "رمادي", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "brun (brune)", ar: "قمحي / أسمر", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "marron", ar: "بني", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "violet (violette)", ar: "بنفسجي", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "blanc (blanche)", ar: "أبيض", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "rouge", ar: "أحمر", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "orange", ar: "برتقالي", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "jaune", ar: "أصفر", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "rose", ar: "وردي", unit: "G10 U1", cat: "لون", weight: 3 },
+      { fr: "châtain", ar: "كستنائي", unit: "G10 U1", cat: "لون", weight: 3 },
+
+      // Expressions & Salutations
+      { fr: "Bonjour !", ar: "صباح الخير !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Salut !", ar: "أهلاً / سلام !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Bonsoir !", ar: "مساء الخير !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Bonjour tout le monde !", ar: "صباح الخير للجميع !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Bonsoir tout le monde !", ar: "مساء الخير للجميع !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Salut tout le monde !", ar: "مرحباً بالجميع !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Ça va ?", ar: "كيف حالك؟ / هل الأمور بخير؟", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Comment vas-tu ?", ar: "كيف حالك؟", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Tu vas bien ?", ar: "هل أنت بخير؟", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Vous allez bien ?", ar: "هل أنتم / حضرتك بخير؟", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Ça va bien !", ar: "أنا بخير !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Ça va super bien !", ar: "أنا بأحسن حال !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Très bien !", ar: "بخير جداً !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Comme ci comme ça !", ar: "يعني نص نص / لا بأس !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Ça va mal !", ar: "لست بخير !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Pas très bien !", ar: "لست على ما يرام !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Je ne vais pas bien !", ar: "أنا لست بخير !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Bof !", ar: "عادي / لا جديد !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Au revoir !", ar: "إلى اللقاء !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "À plus !", ar: "إلى اللقاء قريباً !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "À bientôt !", ar: "أراك قريباً !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "À demain !", ar: "أراك غداً !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "À tout de suite !", ar: "أراك حالاً !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "À tout à l'heure !", ar: "إلى اللقاء بعد قليل !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Adieu !", ar: "وداعاً (فراق طويل) !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Ciao !", ar: "وداعاً / مع السلامة !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Bonne journée !", ar: "يوماً سعيداً !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Bonne soirée !", ar: "أمسية سعيدة !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "Bonne nuit !", ar: "تصبح على خير !", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "moi", ar: "أنا (ضمير توكيد)", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "toi", ar: "أنت (ضمير توكيد)", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "en langue familière", ar: "باللغة الدارجة (العامية)", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "en langue courante", ar: "باللغة السائدة (المعتادة)", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "c'est", ar: "إنه / هو يكون", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "ce sont", ar: "إنهم / هؤلاء يكونون", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "qui c'est ?", ar: "من هذا؟", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "qu'est-ce que vous dites ?", ar: "ماذا تقولون / حضرتك؟", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 },
+      { fr: "qu'est-ce qu'il dit ?", ar: "ماذا يقول هو؟", unit: "G10 U1", cat: "تعبير / جملة", weight: 3 }
+    ];
+
+    const STORAGE_KEY = 'vocab_master_v2_data';
+    let words = [];
+    let currentDeck = [];
+    let currentCardIndex = 0;
+    let isFlipped = false;
+    let speechRate = 0.85;
+
+    function initSpeechEngine() {
+      // Warm up voices
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = () => {
+          window.speechSynthesis.getVoices();
+        };
+      }
+    }
+
+    function toggleAudioSpeed() {
+      if (speechRate === 0.85) {
+        speechRate = 0.65;
+        document.getElementById('speedLabel').innerText = '0.6x بطيء';
+      } else if (speechRate === 0.65) {
+        speechRate = 1.0;
+        document.getElementById('speedLabel').innerText = '1.0x عادي';
+      } else {
+        speechRate = 0.85;
+        document.getElementById('speedLabel').innerText = '0.8x';
+      }
+      showToast(`سرعة النطق: ${document.getElementById('speedLabel').innerText}`);
+    }
+
+    // Dynamic pronunciation for ANY word (existing or freshly imported)
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast("جهازك لا يدعم النطق الصوتي التلقائي");
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      // Clean up brackets or parenthesized info before speaking
+      const cleanedText = text.replace(/\(.*?\)/g, '').replace(/[!?,]/g, '').trim();
+      
+      const utterance = new SpeechSynthesisUtterance(cleanedText || text);
+      utterance.lang = 'fr-FR';
+      utterance.rate = speechRate;
+
+      // Select French voice if present
+      const voices = window.speechSynthesis.getVoices();
+      const frVoice = voices.find(v => v.lang.startsWith('fr') || v.lang.includes('FR'));
+      if (frVoice) {
+        utterance.voice = frVoice;
+      }
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function speakCurrentWord() {
+      if (currentDeck.length > 0 && currentDeck[currentCardIndex]) {
+        speakText(currentDeck[currentCardIndex].fr);
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastMessage');
+      text.innerText = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+      }, 2000);
+    }
+
+    function initApp() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          words = JSON.parse(stored);
+        } else {
+          words = [...MASTER_DEFAULT_WORDS];
+          saveWords();
+        }
+      } catch (e) {
+        words = [...MASTER_DEFAULT_WORDS];
+      }
+
+      // Ensure every word has a weight
+      words.forEach(w => {
+        if (!w.weight) w.weight = 3;
+      });
+
+      setupTheme();
+      initSpeechEngine();
+      populateUnitSelects();
+      filterCardDeck();
+      renderWordsList();
+    }
+
+    function saveWords() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+      } catch (e) {
+        console.error("Storage error:", e);
+      }
+    }
+
+    function getUniqueUnits() {
+      const set = new Set(words.map(w => (w.unit || 'عام').trim()));
+      return Array.from(set).sort();
+    }
+
+    function populateUnitSelects() {
+      const units = getUniqueUnits();
+      const cardSelect = document.getElementById('cardUnitFilter');
+      const manageSelect = document.getElementById('manageUnitFilter');
+
+      const cardVal = cardSelect.value;
+      const manageVal = manageSelect.value;
+
+      let options = `<option value="ALL">جميع الكلمات (${words.length} كلمة)</option>`;
+      units.forEach(u => {
+        const count = words.filter(w => w.unit === u).length;
+        options += `<option value="${u}">${u} (${count})</option>`;
+      });
+
+      cardSelect.innerHTML = options;
+      manageSelect.innerHTML = options;
+
+      if (units.includes(cardVal)) cardSelect.value = cardVal;
+      if (units.includes(manageVal)) manageSelect.value = manageVal;
+
+      populateQuizUnits();
+    }
+
+    function filterCardDeck() {
+      const selectedUnit = document.getElementById('cardUnitFilter').value;
+      if (selectedUnit === 'ALL') {
+        currentDeck = [...words];
+      } else {
+        currentDeck = words.filter(w => w.unit === selectedUnit);
+      }
+      // Shuffle automatically so it starts random
+      shuffleDeck(false);
+    }
+
+    // Pure randomize without resetting position inappropriately
+    function shuffleDeck(notify = false) {
+      if (currentDeck.length <= 1) return;
+
+      // Fisher-Yates shuffle
+      for (let i = currentDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [currentDeck[i], currentDeck[j]] = [currentDeck[j], currentDeck[i]];
+      }
+
+      currentCardIndex = 0;
+      updateCardUI();
+      if (notify) showToast("تم خلط ترتيب البطاقات عشوائياً");
+    }
+
+    // CRITICAL: reset card to French side EVERY time we change words
+    function resetCardFlip() {
+      isFlipped = false;
+      const card = document.getElementById('mainCard');
+      card.classList.remove('rotate-y-180');
+    }
+
+    function updateCardUI() {
+      // Always reset back to French side
+      resetCardFlip();
+
+      const counter = document.getElementById('deckCounter');
+
+      if (currentDeck.length === 0) {
+        document.getElementById('cardFrontText').innerText = "لا توجد كلمات";
+        document.getElementById('cardFrontCategory').innerText = "";
+        document.getElementById('cardFrontUnitTag').innerText = "--";
+        document.getElementById('cardBackText').innerText = "أضف كلمات من تبويب الإدارة";
+        document.getElementById('cardBackFrench').innerText = "";
+        counter.innerText = "0 / 0";
+        return;
+      }
+
+      const item = currentDeck[currentCardIndex];
+      document.getElementById('cardFrontText').innerText = item.fr;
+      document.getElementById('cardFrontCategory').innerText = item.cat || "كلمة";
+      document.getElementById('cardFrontUnitTag').innerText = item.unit || "الوحدة";
+      document.getElementById('cardBackUnitTag').innerText = item.unit || "الوحدة";
+
+      document.getElementById('cardBackFrench').innerText = item.fr;
+      document.getElementById('cardBackText').innerText = item.ar;
+
+      // Weight tag UI
+      const masteryBadge = document.getElementById('cardFrontMastery');
+      const w = item.weight || 3;
+      if (w <= 1) {
+        masteryBadge.innerText = 'مستوى: نسيتها (مكثف)';
+        masteryBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full border border-rose-200 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400';
+      } else if (w === 2) {
+        masteryBadge.innerText = 'مستوى: بصعوبة';
+        masteryBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400';
+      } else if (w >= 5) {
+        masteryBadge.innerText = 'مستوى: متقنة جداً';
+        masteryBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400';
+      } else {
+        masteryBadge.innerText = 'مستوى: عادي';
+        masteryBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-800 text-slate-500';
+      }
+
+      counter.innerText = `${currentCardIndex + 1} / ${currentDeck.length}`;
+    }
+
+    function toggleFlip() {
+      if (currentDeck.length === 0) return;
+      const card = document.getElementById('mainCard');
+      isFlipped = !isFlipped;
+      if (isFlipped) {
+        card.classList.add('rotate-y-180');
+      } else {
+        card.classList.remove('rotate-y-180');
+      }
+    }
+
+    function nextCard() {
+      if (currentDeck.length === 0) return;
+      currentCardIndex = (currentCardIndex + 1) % currentDeck.length;
+      updateCardUI();
+    }
+
+    function prevCard() {
+      if (currentDeck.length === 0) return;
+      currentCardIndex = (currentCardIndex - 1 + currentDeck.length) % currentDeck.length;
+      updateCardUI();
+    }
+
+    // 4-Level Spaced Repetition Grading
+    function gradeCard(level) {
+      if (currentDeck.length === 0) return;
+      const currentItem = currentDeck[currentCardIndex];
+
+      // Find real item in master storage
+      const masterItem = words.find(w => w.fr === currentItem.fr && w.ar === currentItem.ar);
+
+      if (level === 1) { // Again (Forgot)
+        currentItem.weight = 1;
+        if (masterItem) masterItem.weight = 1;
+        // Re-insert this card again soon (3 cards ahead)
+        currentDeck.splice(Math.min(currentCardIndex + 4, currentDeck.length), 0, currentItem);
+        showToast("ستتكرر الكلمة قريباً لتثبيتها");
+      } else if (level === 2) { // Hard
+        currentItem.weight = 2;
+        if (masterItem) masterItem.weight = 2;
+        currentDeck.splice(Math.min(currentCardIndex + 7, currentDeck.length), 0, currentItem);
+        showToast("تم جدولة مراجعتها قريباً");
+      } else if (level === 3) { // Good
+        currentItem.weight = 3;
+        if (masterItem) masterItem.weight = 3;
+      } else if (level === 4) { // Easy
+        currentItem.weight = 5;
+        if (masterItem) masterItem.weight = 5;
+        showToast("ممتاز، تم تقليل تكرارها");
+      }
+
+      saveWords();
+      nextCard();
+    }
+
+    let quizPool = [];
+    let quizIndex = 0;
+    let quizScore = 0;
+    let quizCurrentItem = null;
+
+    function populateQuizUnits() {
+      const container = document.getElementById('quizUnitsCheckboxes');
+      const units = getUniqueUnits();
+
+      if (units.length === 0) {
+        container.innerHTML = `<span class="text-xs text-slate-400">لا توجد وحدات</span>`;
+        return;
+      }
+
+      container.innerHTML = units.map((u, i) => `
+        <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 cursor-pointer text-xs font-bold hover:border-slate-400 transition">
+          <input type="checkbox" name="quizUnitCheckbox" value="${u}" class="w-4 h-4 rounded text-blue-600 focus:ring-0" checked>
+          <span class="truncate font-latin">${u}</span>
+        </label>
+      `).join('');
+    }
+
+    function selectAllQuizUnits(checkAll) {
+      const boxes = document.querySelectorAll('input[name="quizUnitCheckbox"]');
+      boxes.forEach(b => b.checked = checkAll);
+    }
+
+    function startQuizSession() {
+      const selectedUnits = Array.from(document.querySelectorAll('input[name="quizUnitCheckbox"]:checked')).map(cb => cb.value);
+
+      if (selectedUnits.length === 0) {
+        showToast("يرجى اختيار وحدة واحدة على الأقل للاختبار");
+        return;
+      }
+
+      const availableWords = words.filter(w => selectedUnits.includes(w.unit));
+      if (availableWords.length < 4) {
+        showToast("الوحدات المختارة يجب أن تحتوي على 4 كلمات كحد أدنى");
+        return;
+      }
+
+      const lenVal = document.getElementById('quizLength').value;
+      const count = lenVal === 'ALL' ? availableWords.length : Math.min(parseInt(lenVal), availableWords.length);
+
+      // Weighted shuffle: words with low weight (hard/forgotten) appear with higher probability
+      const weightedList = [];
+      availableWords.forEach(w => {
+        const factor = (w.weight <= 1) ? 3 : (w.weight === 2 ? 2 : 1);
+        for (let i = 0; i < factor; i++) weightedList.push(w);
+      });
+
+      // Shuffle weighted and take unique set of required count
+      const shuffledWeighted = [...weightedList].sort(() => 0.5 - Math.random());
+      const selectedSet = new Set();
+      for (const w of shuffledWeighted) {
+        selectedSet.add(w);
+        if (selectedSet.size >= count) break;
+      }
+
+      quizPool = Array.from(selectedSet);
+      quizIndex = 0;
+      quizScore = 0;
+
+      document.getElementById('quizSetupCard').classList.add('hidden');
+      document.getElementById('quizResultsScreen').classList.add('hidden');
+      document.getElementById('quizActiveArea').classList.remove('hidden');
+
+      renderQuizStep();
+    }
+
+    function renderQuizStep() {
+      const testType = document.getElementById('quizTestType').value;
+      quizCurrentItem = quizPool[quizIndex];
+
+      document.getElementById('quizProgressBadge').innerText = `Q ${quizIndex + 1} / ${quizPool.length}`;
+      document.getElementById('quizScoreBadge').innerText = `Score: ${quizScore}`;
+      document.getElementById('quizQuestionUnit').innerText = quizCurrentItem.unit || "عام";
+      document.getElementById('quizWordCategory').innerText = quizCurrentItem.cat || "كلمة";
+      document.getElementById('quizNextAction').classList.add('hidden');
+
+      const dirSetting = document.getElementById('quizDirection').value;
+      let isFrToAr = true;
+
+      if (dirSetting === 'fr-to-ar') isFrToAr = true;
+      else if (dirSetting === 'ar-to-fr') isFrToAr = false;
+      else isFrToAr = Math.random() > 0.5;
+
+      quizCurrentItem.isFrToAr = isFrToAr;
+
+      const promptEl = document.getElementById('quizQuestionPrompt');
+      const wordEl = document.getElementById('quizQuestionWord');
+      const ttsBtn = document.getElementById('quizTtsBtn');
+
+      if (isFrToAr) {
+        promptEl.innerText = "اختر المعنى الصحيح باللغة العربية:";
+        wordEl.innerText = quizCurrentItem.fr;
+        wordEl.className = "font-latin text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 py-2";
+        ttsBtn.classList.remove('hidden');
+      } else {
+        promptEl.innerText = "ما هو المصطلح المقابل بالفرنسية؟";
+        wordEl.innerText = quizCurrentItem.ar;
+        wordEl.className = "text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white py-2";
+        ttsBtn.classList.add('hidden');
+      }
+
+      const mcqGrid = document.getElementById('quizOptionsGrid');
+      const writeArea = document.getElementById('quizWritingArea');
+
+      if (testType === 'write') {
+        // Dictée mode
+        mcqGrid.classList.add('hidden');
+        writeArea.classList.remove('hidden');
+        const input = document.getElementById('quizWriteInput');
+        input.value = '';
+        input.disabled = false;
+        input.focus();
+        document.getElementById('quizWriteFeedback').className = 'hidden';
+      } else {
+        // MCQ mode
+        writeArea.classList.add('hidden');
+        mcqGrid.classList.remove('hidden');
+
+        // Pick 3 distractors
+        const others = words
+          .filter(w => (isFrToAr ? w.ar !== quizCurrentItem.ar : w.fr !== quizCurrentItem.fr))
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 3);
+
+        const options = [quizCurrentItem, ...others].sort(() => 0.5 - Math.random());
+
+        mcqGrid.innerHTML = options.map(opt => {
+          const text = isFrToAr ? opt.ar : opt.fr;
+          const isLatin = !isFrToAr;
+          return `
+            <button onclick="handleOptionSelect(this, '${escapeQuotes(opt.fr)}', '${escapeQuotes(quizCurrentItem.fr)}')" class="quiz-btn p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600 font-bold text-sm transition shadow-sm text-center ${isLatin ? 'font-latin text-base' : ''}">
+              ${text}
+            </button>
+          `;
+        }).join('');
+      }
+    }
+
+    function escapeQuotes(str) {
+      return (str || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    function speakQuizWord() {
+      if (quizCurrentItem) speakText(quizCurrentItem.fr);
+    }
+
+    function handleOptionSelect(btn, chosenFr, correctFr) {
+      const allButtons = document.querySelectorAll('.quiz-btn');
+      allButtons.forEach(b => b.disabled = true);
+
+      const isCorrect = (chosenFr === correctFr);
+      if (isCorrect) {
+        btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+        quizScore++;
+        document.getElementById('quizScoreBadge').innerText = `Score: ${quizScore}`;
+      } else {
+        btn.classList.add('bg-rose-600', 'text-white', 'border-rose-600');
+        // Highlight correct option
+        const targetText = quizCurrentItem.isFrToAr ? quizCurrentItem.ar : quizCurrentItem.fr;
+        allButtons.forEach(b => {
+          if (b.innerText.trim() === targetText.trim()) {
+            b.classList.add('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/50', 'text-emerald-700', 'dark:text-emerald-300');
+          }
+        });
+      }
+
+      document.getElementById('quizNextAction').classList.remove('hidden');
+    }
+
+    function submitWrittenAnswer() {
+      const input = document.getElementById('quizWriteInput');
+      const val = input.value.trim().toLowerCase();
+      const targetFr = quizCurrentItem.fr.trim().toLowerCase();
+      const feedback = document.getElementById('quizWriteFeedback');
+
+      input.disabled = true;
+
+      // Normalize accents if user misses them slightly, but reward exact matches
+      const isMatch = (val === targetFr);
+
+      feedback.classList.remove('hidden');
+      if (isMatch) {
+        feedback.className = 'text-xs font-bold p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800';
+        feedback.innerText = "إجابة دقيقة وصحيحة 100%";
+        quizScore++;
+        document.getElementById('quizScoreBadge').innerText = `Score: ${quizScore}`;
+      } else {
+        feedback.className = 'text-xs font-bold p-3 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800';
+        feedback.innerHTML = `الإجابة الصحيحة هي: <span class="font-latin text-sm font-extrabold underline">${quizCurrentItem.fr}</span>`;
+      }
+
+      document.getElementById('quizNextAction').classList.remove('hidden');
+    }
+
+    function nextQuizStep() {
+      quizIndex++;
+      if (quizIndex < quizPool.length) {
+        renderQuizStep();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      document.getElementById('quizActiveArea').classList.add('hidden');
+      const res = document.getElementById('quizResultsScreen');
+      res.classList.remove('hidden');
+
+      const pct = Math.round((quizScore / quizPool.length) * 100);
+      document.getElementById('quizFinalScore').innerText = `${quizScore} / ${quizPool.length}`;
+      document.getElementById('quizFinalPercentage').innerText = `${pct}% معدل النجاح`;
+    }
+
+    function exitQuiz() {
+      document.getElementById('quizActiveArea').classList.add('hidden');
+      document.getElementById('quizResultsScreen').classList.add('hidden');
+      document.getElementById('quizSetupCard').classList.remove('hidden');
+    }
+
+    function renderWordsList() {
+      const container = document.getElementById('wordsListContainer');
+      const search = (document.getElementById('manageSearchInput').value || '').trim().toLowerCase();
+      const unit = document.getElementById('manageUnitFilter').value;
+
+      document.getElementById('totalWordsCount').innerText = words.length;
+
+      const filtered = words.filter(w => {
+        const matchesUnit = (unit === 'ALL' || w.unit === unit);
+        const matchesSearch = !search ||
+          (w.fr && w.fr.toLowerCase().includes(search)) ||
+          (w.ar && w.ar.toLowerCase().includes(search));
+        return matchesUnit && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-10 text-slate-400 bg-white dark:bg-slate-900 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800">
+            <p class="font-bold text-xs">لا توجد نتائج مطابقة لبحثك</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(w => {
+        const masterIdx = words.findIndex(x => x.fr === w.fr && x.ar === w.ar);
+        return `
+          <div class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <div class="flex items-center gap-3">
+              <button onclick="speakText('${escapeQuotes(w.fr)}')" class="p-2 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              </button>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-latin font-bold text-sm text-slate-900 dark:text-white">${w.fr}</span>
+                  <span class="text-[10px] text-slate-400 font-semibold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800">${w.cat || 'كلمة'}</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">${w.ar}</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-latin">${w.unit || 'عام'}</span>
+              <button onclick="deleteWord(${masterIdx})" class="p-1.5 text-slate-400 hover:text-rose-500 transition" title="حذف الكلمة">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function saveSingleWord() {
+      const fr = document.getElementById('newWordFr').value.trim();
+      const ar = document.getElementById('newWordAr').value.trim();
+      const unit = document.getElementById('newWordUnit').value.trim() || 'عام';
+      const cat = document.getElementById('newWordCategory').value;
+
+      if (!fr || !ar) {
+        showToast("يرجى كتابة الكلمة ومعناها بالعربية");
+        return;
+      }
+
+      words.unshift({ fr, ar, unit, cat, weight: 3 });
+      saveWords();
+      populateUnitSelects();
+      filterCardDeck();
+      renderWordsList();
+      closeModal('addWordModal');
+
+      document.getElementById('newWordFr').value = '';
+      document.getElementById('newWordAr').value = '';
+      showToast("تمت إضافة الكلمة بنجاح");
+    }
+
+    function deleteWord(idx) {
+      if (idx >= 0 && idx < words.length) {
+        words.splice(idx, 1);
+        saveWords();
+        populateUnitSelects();
+        filterCardDeck();
+        renderWordsList();
+        showToast("تم حذف الكلمة");
+      }
+    }
+
+    function confirmResetToDefault() {
+      words = JSON.parse(JSON.stringify(MASTER_DEFAULT_WORDS));
+      saveWords();
+      populateUnitSelects();
+      filterCardDeck();
+      renderWordsList();
+      showToast("تمت استعادة الكلمات الأساسية");
+    }
+
+    function processBulkImport() {
+      const unit = (document.getElementById('bulkUnitName').value || 'وحدة جديدة').trim();
+      const text = document.getElementById('bulkTextInput').value.trim();
+
+      if (!text) {
+        showToast("يرجى كتابة أو لصق كلمات أولاً");
+        return;
+      }
+
+      const lines = text.split('\n');
+      let count = 0;
+
+      lines.forEach(l => {
+        const line = l.trim();
+        if (!line || line.startsWith('#')) return;
+
+        let parts = [];
+        if (line.includes('=')) parts = line.split('=');
+        else if (line.includes('\t')) parts = line.split('\t');
+        else if (line.includes(' - ')) parts = line.split(' - ');
+        else if (line.includes(',')) parts = line.split(',');
+
+        if (parts.length >= 2) {
+          const fr = parts[0].trim();
+          const ar = parts[1].trim();
+
+          let cat = "كلمة";
+          const low = fr.toLowerCase();
+          if (low.startsWith('un ') || low.startsWith('le ')) cat = "اسم مذكر";
+          else if (low.startsWith('une ') || low.startsWith('la ')) cat = "اسم مؤنث";
+          else if (low.startsWith('les ') || low.startsWith('des ')) cat = "اسم جمع";
+
+          if (fr && ar) {
+            words.push({ fr, ar, unit, cat, weight: 3 });
+            count++;
+          }
+        }
+      });
+
+      if (count > 0) {
+        saveWords();
+        populateUnitSelects();
+        filterCardDeck();
+        renderWordsList();
+        closeModal('bulkImportModal');
+        document.getElementById('bulkTextInput').value = '';
+        showToast(`تم استيراد ${count} كلمة جديدة بنجاح`);
+      } else {
+        showToast("تعذر استخراج الكلمات! تأكد من وجود علامة (=) بين الكلمة ومعناها");
+      }
+    }
+
+    function exportDataJSON() {
+      const json = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(words, null, 2));
+      const a = document.createElement('a');
+      a.href = json;
+      a.download = `french_vocab_${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToast("تم حفظ ملف النسخة الاحتياطية");
+    }
+
+    function loadJsonFile() {
+      const input = document.getElementById('jsonFileInput');
+      if (!input.files || input.files.length === 0) {
+        showToast("يرجى اختيار ملف JSON");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (Array.isArray(parsed)) {
+            words = parsed;
+            saveWords();
+            populateUnitSelects();
+            filterCardDeck();
+            renderWordsList();
+            closeModal('importJsonModal');
+            showToast(`تم استيراد ${words.length} كلمة`);
+          }
+        } catch (err) {
+          showToast("صيغة الملف غير مدعومة");
+        }
+      };
+      reader.readAsText(input.files[0]);
+    }
+
+    function switchTab(t) {
+      ['cards', 'quiz', 'manage'].forEach(tab => {
+        const v = document.getElementById(`view-${tab}`);
+        const btn = document.getElementById(`tabBtn-${tab}`);
+        if (tab === t) {
+          v.classList.remove('hidden');
+          btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-900', 'dark:text-white', 'shadow-sm');
+          btn.classList.remove('text-slate-600', 'dark:text-slate-400');
+        } else {
+          v.classList.add('hidden');
+          btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-900', 'dark:text-white', 'shadow-sm');
+          btn.classList.add('text-slate-600', 'dark:text-slate-400');
+        }
+      });
+
+      if (t === 'quiz') populateQuizUnits();
+      if (t === 'cards') resetCardFlip();
+    }
+
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    function setupTheme() {
+      const toggle = document.getElementById('toggleDarkBtn');
+      const sun = document.getElementById('sunIcon');
+      const moon = document.getElementById('moonIcon');
+
+      const isDark = localStorage.getItem('vocab_theme') === 'dark' ||
+        (!localStorage.getItem('vocab_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        sun.classList.add('hidden');
+        moon.classList.remove('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        sun.classList.remove('hidden');
+        moon.classList.add('hidden');
+      }
+
+      toggle.onclick = () => {
+        const isCurrentDark = document.documentElement.classList.contains('dark');
+        if (isCurrentDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('vocab_theme', 'light');
+          sun.classList.remove('hidden');
+          moon.classList.add('hidden');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('vocab_theme', 'dark');
+          sun.classList.add('hidden');
+          moon.classList.remove('hidden');
+        }
+      };
+    }
+
+    // Keyboard controls for desktop/laptop
+    document.addEventListener('keydown', (e) => {
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+
+      const isCards = !document.getElementById('view-cards').classList.contains('hidden');
+      if (isCards) {
+        if (e.code === 'Space') {
+          e.preventDefault();
+          toggleFlip();
+        } else if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+          nextCard();
+        } else if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+          prevCard();
+        } else if (e.key === '1') {
+          gradeCard(1);
+        } else if (e.key === '2') {
+          gradeCard(2);
+        } else if (e.key === '3') {
+          gradeCard(3);
+        } else if (e.key === '4') {
+          gradeCard(4);
+        }
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
